@@ -13,5 +13,5 @@ public List<Product> getProductbyCategory(String cat);
 public void addProduct(Product p);
 public void removeProduct(int pid);
 public void updateProduct(Product p);
-public Product getPersonById(int pid);
+public Product getProductById(int pid);
 }

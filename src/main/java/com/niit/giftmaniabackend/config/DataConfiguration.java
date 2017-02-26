@@ -11,7 +11,9 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 
 import com.niit.giftmaniabackend.dao.ProductDao;
+import com.niit.giftmaniabackend.dao.UserDao;
 import com.niit.giftmaniabackend.dao.imple.ProductDaoImple;
+import com.niit.giftmaniabackend.dao.imple.UserDaoImple;
 
 @Configuration
 public class DataConfiguration {
@@ -65,6 +67,12 @@ public class DataConfiguration {
 	{
 		return new ProductDaoImple();
 		
+	}
+	
+	@Bean(name="userBean")
+	public UserDao getUserDao()
+	{
+		return new UserDaoImple();
 	}
 }
 

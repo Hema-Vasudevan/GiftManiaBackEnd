@@ -3,7 +3,6 @@ package com.niit.giftmaniabackend.dao.imple;
 
 import java.util.*;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,14 +23,16 @@ public class ProductDaoImple implements ProductDao {
 	{
 		Session session=sessionFactory.openSession();
 		listProduct=session.createQuery("FROM Product").list();
+		System.out.println(listProduct);
 		return listProduct;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Product> getProductbyCategory(String cat)
 	{
 		Session session=sessionFactory.openSession();
 		Transaction tx=session.beginTransaction();
-		listProduct=session.createQuery("FROM Product p where p.category=:cateogory").setParameter("category", cat).list();
+		listProduct=session.createQuery("FROM com.niit.giftmaniabackend.model.Product p where p.category=:category").setString("category", cat).list();
 		tx.commit();
 		session.close();
 		return (List<Product>) (listProduct.size()>0?listProduct:null);
@@ -67,7 +68,7 @@ public class ProductDaoImple implements ProductDao {
 		session.close();
 	}
 
-	public Product getPersonById(int pid) {
+	public Product getProductById(int pid) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
 		Transaction tx=session.beginTransaction();

@@ -3,7 +3,9 @@ package com.niit.giftmaniabackend;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.giftmaniabackend.dao.ProductDao;
+import com.niit.giftmaniabackend.dao.UserDao;
 import com.niit.giftmaniabackend.model.Product;
+import com.niit.giftmaniabackend.model.User;
 
 public class App 
 {
@@ -14,7 +16,6 @@ public class App
       ctx.scan("com.niit.giftmaniabackend.config");
       ctx.refresh();
       ProductDao pd=(ProductDao)ctx.getBean("productBean");
-      Product p=new Product(1,"Bracelets","Friendship Bands","Women");
-      pd.addProduct(p);
+      UserDao us=(UserDao)ctx.getBean("userBean");
 }
 }
